@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-const [times, setTimes] = useState<any[]>([]);
+const [times, setTimes] = useState<number[]>([]);
 
 
 const getTimes = async () => {
@@ -19,18 +19,16 @@ const getTimes = async () => {
 const NamozVaqti = () => {
 
   return (
-    <div className=''>
+    <div>
         <div>
         <div className='times_name'>
           <div className="times">
               {/* <Header /> */}
-              <p className='home__tong'>Tongi-saharlik</p>
-            <p className='home__bomdod'>Bomdod</p>
-            <p className='home__peshin'>Peshin</p>
-            <p className='home__asr'>Asr</p>
-            <p className='home__shom'>Shom va Iftorlik</p>
-            <p className='home__hufton'>Xufton</p>
-            
+              <p className='home__text p'></p>
+            <p className='home__category p1'>Артикул</p>
+            <p className='home__brend p2'>Бренд</p>
+            <p className='home__cost p3'>Цена</p>
+            <p className='home__stock p4'>Цена со скидкой</p>
                      
 
           </div>
@@ -38,24 +36,21 @@ const NamozVaqti = () => {
             {
                 times.map((tm) => (
                   <ul className='times'>
-                  <li className='home__tong'>
-                  {tm.tong_saharlik}
+                  <li className='home__text p'>
+                  <input type="checkbox" />
+                  Товар{allcard.id}
                   </li>
-              <li className='home__bomdod'>
-                  {tm.quyosh}
+              <li className='home__category p1'>
+                  {allcard.category}
               </li>
-              <li className='home__peshin'>
-                  {tm.peshin}
+              <li className='home__brend p2'>
+                  {allcard.brand}
               </li>
-              <li className='home__asr'>
-                  {tm.asr} $
+              <li className='home__cost p3'>
+                  {allcard.price} $
               </li>
-              <li className='home__shom'>
-                  {tm.shom_iftor}$
-                  <hr />
-              </li>
-              <li className='home__hufton'>
-                  {tm.hufton}$
+              <li className='home__stock p4'>
+                  {allcard.stock}$
                   <hr />
               </li>
               
@@ -68,7 +63,7 @@ const NamozVaqti = () => {
         </div>
     </div>  
         </div>
-    // </div>
+    </div>
   )
 }
 
