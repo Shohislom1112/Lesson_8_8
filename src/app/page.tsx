@@ -1,74 +1,51 @@
-import React, { useState } from 'react'
-
-
-const [times, setTimes] = useState<any[]>([]);
-
 
 const getTimes = async () => {
     try {
       const res = await fetch('https://jsonplaceholder.typicode.com/users');
       const data = await res.json();
-     const setTimes = data;
-      return setTimes
+      return data
     } catch (error: unknown | any) {
       return error.message;
     }
   };
 
 
-const NamozVaqti = () => {
-
+const NamozVaqti = async () => {
+  const times = await getTimes();
   return (
     <div className=''>
-        <div>
-        <div className='times_name'>
-          <div className="times">
-              {/* <Header /> */}
-              <p className='home__tong'>Tongi-saharlik</p>
-            <p className='home__bomdod'>Bomdod</p>
-            <p className='home__peshin'>Peshin</p>
-            <p className='home__asr'>Asr</p>
-            <p className='home__shom'>Shom va Iftorlik</p>
-            <p className='home__hufton'>Xufton</p>
-            
-                     
+        <div className='container'>
+        <table className='table-fixed'>
+        <thead>
+    <tr>
+      <th>Tongi-saharlik</th>
+      <th>Bomdod</th>
+      <th>Peshin</th>
+      <th>Asr</th>
+      <th>Shom va Iftorlik</th>
+      <th>Xufton</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {
+      times.map((tm:any) => (
 
-          </div>
-<hr />
-            {
-                times.map((tm) => (
-                  <ul className='times'>
-                  <li className='home__tong'>
-                  {tm.tong_saharlik}
-                  </li>
-              <li className='home__bomdod'>
-                  {tm.quyosh}
-              </li>
-              <li className='home__peshin'>
-                  {tm.peshin}
-              </li>
-              <li className='home__asr'>
-                  {tm.asr} $
-              </li>
-              <li className='home__shom'>
-                  {tm.shom_iftor}$
-                  <hr />
-              </li>
-              <li className='home__hufton'>
-                  {tm.hufton}$
-                  <hr />
-              </li>
-              
-              </ul>
-                ))
-              }
-              <hr />
+        <td>{tm.tong_saharlik}</td>
+        <td> {tm.quyosh}</td>
+        <td>{tm.peshin}</td>
+        <td> {tm.asr} </td>
+        <td> {tm.shom_iftor}</td>
+        <td>{tm.hufton}</td>
+        ))
+        }
+            </tr>
+    </tbody>
 
-
-        </div>
+        </table>
     </div>  
         </div>
-    // </div>
+
   )
 }
 
